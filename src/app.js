@@ -10,11 +10,17 @@ app.use(cors({
 }))
 
 app.use(express.json({limit:"16kb"}));
-
 app.use(express.urlencoded({extended:true,limit:"16kb"}))
-
 app.use(express.static("public"))
-
 app.use(cookieParser())
+
+//routes has been included here
+import userRouter from './routes/user.routes.js';
+
+//decleartion of routes
+app.use("/api/v1/users",userRouter)
+
+//sample URL http://localhost:8000/api/v1/users/{register  or login}
+
 
 export {app};
